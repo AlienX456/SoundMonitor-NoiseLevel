@@ -63,10 +63,6 @@ variable "kafka_bootstrap_server_one" {
   description =  "Endpoint of kafka server one"
 }
 
-variable "device_selector" {
-  description =  "Device to use"
-}
-
 variable "family-name" {
   default = "monitor-inferencer"
 }
