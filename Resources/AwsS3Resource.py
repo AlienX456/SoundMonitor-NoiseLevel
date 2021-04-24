@@ -16,7 +16,3 @@ class AwsS3Resource:
         except Exception as e:
             logging.error('Error: while downloading the file %s exception %e', file_name, str(e))
             raise
-
-    def remove_file(self, file_name):
-        file = self.bucket.Object(file_name)
-        file.delete()

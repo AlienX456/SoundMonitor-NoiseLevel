@@ -18,13 +18,8 @@ class NivelRuido:
         @vrsión: 1.0 30/05/2020
         @autor: Óscar Acosta, Universidad Distrital/Universidad de San Buenaventura
     """
-    def __init__(self, nombreArchivo="Sin nombre", datosAudio=0, dBFS=0, fs=0, LeqdB=0, rms=0, t=0):
-        """Constructor de los objetos NivelRuido """
-        self.__awsResource = AwsS3Resource()
 
     def cargarAudio(self, nombreArchivo):
-        self.__awsResource.download_object(nombreArchivo)
-        logging.info(" \n the name of the file is: " + nombreArchivo + "\n")
         w = wavio.read(nombreArchivo)
         t = np.linspace(0, len(w.data) / w.rate, num=len(w.data))
         return Audio(data=w.data, t=t, fs=w.rate)
