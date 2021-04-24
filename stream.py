@@ -4,8 +4,9 @@ from json import dumps
 import os
 import logging
 import uuid
-service_identifier = uuid.uuid4().__str__()
+
 try:
+    service_identifier = uuid.uuid4().__str__()
 
     consumer = KafkaConsumer(os.environ['DATA_UPLOAD_EVENT'],
                              group_id=os.environ['GROUP_ID'],

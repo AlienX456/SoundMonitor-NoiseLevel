@@ -12,7 +12,8 @@ class AwsS3Resource:
 
     def download_object(self, file_name):
         try:
-            self.bucket.download_file(file_name, '%s.jpg'.format(file_name))
+            logging.info('Trying to download %s', file_name)
+            self.bucket.download_file(file_name, file_name)
         except Exception as e:
             logging.error('Error: while downloading the file %s exception %e', file_name, str(e))
             raise

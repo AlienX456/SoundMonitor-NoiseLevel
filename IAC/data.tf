@@ -39,10 +39,6 @@ variable "records_bucket_name" {
   description =  "audio files bucket NAME"
 }
 
-variable "kafka_group_id" {
-  description = "Kafka inferencers group id"
-}
-
 variable "kafka_data_upload_event" {
   description = "Kafka event of data uploading"
 }
