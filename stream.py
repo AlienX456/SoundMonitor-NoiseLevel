@@ -24,7 +24,9 @@ try:
         fileName = message.value.decode(os.environ['ENCODE_FORMAT'])
         logging.info("New Audio arrived ID %s to consumer %s", fileName, service_identifier)
         try:
-            cicloVidaControl.processAudio(fileName)
+            Leq = cicloVidaControl.processAudio(fileName)
+            dataToSend = {'device_info': {'audio_uuid': fileName}, "noise_level": Leq}
+            producer.send(os.environ['PROCESS_RESULT_EVENT'], value=dataToSend)
             logging.info("%s Jobs Finished", fileName)
         except Exception as e:
             logging.error('Error: "%s" on Consumer "%s" for file "%s"', str(e), service_identifier, fileName)
