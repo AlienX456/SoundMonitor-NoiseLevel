@@ -59,7 +59,6 @@ workflows:
           tag: "${CIRCLE_SHA1}"
       - infrastructure-providing-and-deploy:
           context:
-            - TerraformContext
             - SoundMonitor-KafkaContext
             - SoundMonitor-IACCommonContext
           requires:

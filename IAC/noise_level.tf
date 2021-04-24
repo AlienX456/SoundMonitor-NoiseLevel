@@ -26,5 +26,5 @@ module "noise_level" {
   ecr_image_repo= var.ecr_image_repo
   records_bucket_name= var.records_bucket_name
 
-  device_selector= var.device_selector
+  device_selector= "cpu"
 }
