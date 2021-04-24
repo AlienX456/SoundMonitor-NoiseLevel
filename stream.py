@@ -5,6 +5,8 @@ import os
 import logging
 import uuid
 
+logging.getLogger().setLevel(logging.INFO)
+
 try:
     service_identifier = uuid.uuid4().__str__()
 
