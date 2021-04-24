@@ -5,12 +5,12 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 
 jobs:
-  sonar:
-    docker:
-      - image: 'node:latest'
-    steps:
-      - checkout
-      - sonarcloud/scan
+  #sonar:
+  #  docker:
+  #    - image: 'node:latest'
+  #  steps:
+  #    - checkout
+  #    - sonarcloud/scan
   test:
     docker:
       - image: circleci/python:3.8
@@ -42,7 +42,7 @@ jobs:
 workflows:
   main:
     jobs:
-      - sonar
+      #- sonar
       - test
       - aws-ecr/build-and-push-image:
           context: TerraformContext
