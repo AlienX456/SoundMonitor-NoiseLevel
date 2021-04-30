@@ -42,7 +42,7 @@ jobs:
 workflows:
   main:
     jobs:
-      #- sonar
+      - sonar
       - test
       - aws-ecr/build-and-push-image:
           context: AWSContext
