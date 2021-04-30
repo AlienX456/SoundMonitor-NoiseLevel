@@ -5,12 +5,12 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 
 jobs:
-  #sonar:
-  #  docker:
-  #    - image: 'node:latest'
-  #  steps:
-  #    - checkout
-  #    - sonarcloud/scan
+  sonar:
+    docker:
+      - image: 'node:latest'
+    steps:
+      - checkout
+      - sonarcloud/scan
   test:
     docker:
       - image: circleci/python:3.8
@@ -53,7 +53,7 @@ workflows:
                 - qa
           requires:
             - test
-            # - sonar
+            - sonar
           create-repo: true
           repo: "${AWS_RESOURCE_NAME_PREFIX}"
           tag: "${CIRCLE_SHA1}"
