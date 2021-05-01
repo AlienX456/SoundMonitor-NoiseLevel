@@ -5,8 +5,8 @@ from unittest import TestCase
 class TestCalculoNivelRuido(TestCase):
 
     def test_nivel(self):
-        nivelRuido = NivelRuido()
-        Leq = nivelRuido.calculardB("test/97.5DbAudio.wav")
+        nivel_ruido = NivelRuido()
+        Leq = nivel_ruido.calcular_db("test/97.5DbAudio.wav")
         assert round(Leq, 1) == 97.5
 
 
