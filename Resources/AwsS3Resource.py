@@ -15,5 +15,5 @@ class AwsS3Resource:
             logging.info('Trying to download %s', file_name)
             self.bucket.download_file(file_name, file_name)
         except Exception as e:
-            logging.error('Error: while downloading the file %s exception %e', file_name, str(e))
+            logging.error('Error: while downloading the file %s exception %s', file_name, str(e))
             raise

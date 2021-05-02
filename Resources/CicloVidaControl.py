@@ -8,10 +8,10 @@ class CicloVidaControl:
         self.__nivel_ruido = NivelRuido()
         self.__aws_s3_resource = AwsS3Resource()
 
-    def process_audio(self, nombreArchivo):
-        self.__aws_s3_resource.download_object(nombreArchivo)
-        Leq = self.__nivel_ruido.calcular_db(nombreArchivo)
-        os.remove(nombreArchivo)
-        return Leq
+    def process_audio(self, nombre_archivo):
+        self.__aws_s3_resource.download_object(nombre_archivo)
+        leq = self.__nivel_ruido.calcular_db(nombre_archivo)
+        os.remove(nombre_archivo)
+        return leq
 
 

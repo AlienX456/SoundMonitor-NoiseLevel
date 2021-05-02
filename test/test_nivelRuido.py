@@ -6,8 +6,8 @@ class TestCalculoNivelRuido(TestCase):
 
     def test_nivel(self):
         nivel_ruido = NivelRuido()
-        Leq = nivel_ruido.calcular_db("test/97.5DbAudio.wav")
-        assert round(Leq, 1) == 97.5
+        leq = nivel_ruido.calcular_db("test/97.5DbAudio.wav")
+        assert round(leq, 1) == 97.5
 
 
 

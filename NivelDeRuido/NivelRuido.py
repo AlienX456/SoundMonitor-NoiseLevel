@@ -19,14 +19,14 @@ class NivelRuido:
         @autor: Óscar Acosta, Universidad Distrital/Universidad de San Buenaventura
     """
 
-    def carga_audio(self, nombreArchivo):
-        w = wavio.read(nombreArchivo)
+    def carga_audio(self, nombre_archivo):
+        w = wavio.read(nombre_archivo)
         t = np.linspace(0, len(w.data) / w.rate, num=len(w.data))
         return Audio(data=w.data, t=t, fs=w.rate)
 
 
-    def calcular_db(self, nombreArchivo):
-        audio = self.carga_audio(nombreArchivo)
+    def calcular_db(self, nombre_archivo):
+        audio = self.carga_audio(nombre_archivo)
         audio_64 = np.int64(audio.data)    # Los datos de audio se pasan a 64 bits para poder realizar los cálculos
         N = len(audio_64)
         square = np.int64(np.zeros(N))
@@ -35,6 +35,6 @@ class NivelRuido:
         square_sum = sum(square)
         mean = (square_sum /N)
         rms = np.sqrt(mean)
-        dBFS = 20 * np.log10(rms/(np.iinfo(np.int16).max))
-        Leq = 122.7 - abs(dBFS)
-        return Leq
+        dbfs = 20 * np.log10(rms/(np.iinfo(np.int16).max))
+        leq = 122.7 - abs(dbfs)
+        return leq
