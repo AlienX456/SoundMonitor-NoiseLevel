@@ -6,7 +6,7 @@ class test_ciclo_vida(TestCase):
 
     @mock.patch('Resources.CicloVidaControl.AwsS3Resource')
     @mock.patch('Resources.CicloVidaControl.NivelRuido.calcular_db')
-    def test_cicloDeVida(self, calcular_db, aws_s3_Resource):
+    def test_cicloDeVida(self, calcular_db, aws_s3_resource):
         open("./test/test_file", 'a').close()
         assert os.path.isfile('./test/test_file')
         test_leq = 95.7
