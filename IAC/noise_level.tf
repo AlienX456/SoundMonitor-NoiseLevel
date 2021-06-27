@@ -1,5 +1,5 @@
 module "noise_level" {
-  source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//on-ecs-processing"
+  source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//on-ecs-processing?ref=1.0.0"
 
   cluster-name= var.cluster-name
   service-name= "monitor-noiselevel-service"
