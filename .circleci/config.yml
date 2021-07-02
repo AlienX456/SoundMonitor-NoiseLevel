@@ -51,7 +51,7 @@ workflows:
               only:
                 - master
                 - qa
-                - feature/NewDeploy
+                - feature/newDeploy
           requires:
             - test
             - sonar
