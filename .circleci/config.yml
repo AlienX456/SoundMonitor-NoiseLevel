@@ -45,23 +45,22 @@ workflows:
       - sonar
       - test
       - aws-ecr/build-and-push-image:
-          context: AWSContext
+          context: TerraformContext
+          repo: "${TF_VAR_service_name}"
+          tag: "${CIRCLE_SHA1}"
+          create-repo: true
+          aws-access-key-id: TF_VAR_aws_provider_key
+          aws-secret-access-key: TF_VAR_aws_provider_secret
+          account-url: TF_VAR_aws_ecr_account_url
           filters:
             branches:
               only:
                 - master
                 - qa
-          requires:
-            - test
-            - sonar
-          create-repo: true
-          repo: "${AWS_RESOURCE_NAME_PREFIX}"
-          tag: "${CIRCLE_SHA1}"
       - infrastructure-providing-and-deploy:
           context:
-            - SoundMonitor-KafkaContext
-            - SoundMonitor-IACCommonContext
+            - TerraformContext
+            - KafkaAudioUploadContext
           requires:
             - aws-ecr/build-and-push-image
-
 
