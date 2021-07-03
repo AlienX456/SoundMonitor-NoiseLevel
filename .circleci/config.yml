@@ -57,7 +57,7 @@ workflows:
               only:
                 - master
                 - qa
-                - feature/NewDeploy
+                - feature/newDeploy
       - infrastructure-providing-and-deploy:
           context:
             - TerraformContext
