@@ -1,6 +1,6 @@
 module "noise_level" {
   
-  source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//ecs_s3_kafka_services?ref=2.0.0"
+  source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//ecs_s3_kafka_services"
 
   service-name= "${var.service_name}-service"
   family_name = var.service_name
@@ -21,6 +21,7 @@ module "noise_level" {
   ecr_image_tag= var.ecr_image_tag
   aws_ecr_account_url = var.aws_ecr_account_url
   records_bucket_name= var.records_bucket_name
+  index_name = var.index_name
 
   device_selector= "cpu"
 }

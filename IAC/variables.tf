@@ -35,4 +35,8 @@ variable "kafka_bootstrap_server_one" {
   description =  "Endpoint of kafka server one"
 }
 
+variable "index_name" {
+  description = "Index name for audios"
+}
+
 
