@@ -28,7 +28,7 @@ try:
         logging.info("New Audio arrived ID %s to consumer %s", fileName, service_identifier)
         try:
             leq = control.process_audio(fileName)
-            dataToSend = {'device_info': {'audio_uuid': fileName}, "noise_level": leq}
+            dataToSend = {'device_info': {'data_uuid': fileName}, "noise_level": leq}
             producer.send(os.environ['PROCESS_RESULT_EVENT'], value=dataToSend)
             logging.info("%s Jobs Finished", fileName)
         except Exception as e:
