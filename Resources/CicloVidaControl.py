@@ -16,6 +16,6 @@ class CicloVidaControl:
         finish_time = datetime.now()
         duration = finish_time - start_time
         os.remove(nombre_archivo)
-        return leq, duration
+        return leq, duration.total_seconds()
 
 
