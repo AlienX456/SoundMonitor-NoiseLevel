@@ -11,10 +11,10 @@ class CicloVidaControl:
 
     def process_audio(self, nombre_archivo):
         self.__aws_s3_resource.download_object(nombre_archivo)
-        startTime = datetime.now()
+        start_time = datetime.now()
         leq = self.__nivel_ruido.calcular_db(nombre_archivo)
-        finishTime = datetime.now()
-        duration = finishTime - startTime
+        finish_time = datetime.now()
+        duration = finish_time - start_time
         os.remove(nombre_archivo)
         return leq, duration
 
