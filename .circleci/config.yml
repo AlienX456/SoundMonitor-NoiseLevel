@@ -34,10 +34,18 @@ jobs:
             cd IAC &&
             terraform init
       - run:
-          name: Terraform provide and deploy
+          name: Terraform get map file
           command: |
             cd IAC &&
-            terraform apply -auto-approve -var="ecr_image_tag=${CIRCLE_SHA1}"
+            export IAC_VERSION=$(grep -ohE 'ref=(.*?)"' noise_level.tf | sed 's/ref=//' | sed 's/"//') &&
+            wget "https://raw.githubusercontent.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common/${IAC_VERSION}/map/topic-index-mapping.json"
+      - run:
+          name: Terraform apply
+          command: |
+            cd IAC &&
+            PROJECT_REPONAME=$(echo $CIRCLE_PROJECT_REPONAME | tr '[:upper:]' '[:lower:]') &&
+            terraform apply -auto-approve -var="ecr_image_tag=${CIRCLE_SHA1}" -var="repository_name=${PROJECT_REPONAME}"
+
 
 workflows:
   main:
@@ -46,7 +54,7 @@ workflows:
       - test
       - aws-ecr/build-and-push-image:
           context: TerraformContext
-          repo: "${TF_VAR_service_name}"
+          repo: "${CIRCLE_PROJECT_REPONAME,,}"
           tag: "${CIRCLE_SHA1}"
           create-repo: true
           aws-access-key-id: TF_VAR_aws_provider_key
@@ -63,7 +71,6 @@ workflows:
       - infrastructure-providing-and-deploy:
           context:
             - TerraformContext
-            - KafkaAudioUploadContext
           requires:
             - aws-ecr/build-and-push-image
 
