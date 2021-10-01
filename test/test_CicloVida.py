@@ -12,6 +12,6 @@ class test_ciclo_vida(TestCase):
         test_leq = 95.7
         calcular_db.return_value = test_leq
         ciclo_vida_control = CicloVidaControl()
-        leq, duration = ciclo_vida_control.process_audio("./test/test_file")
+        leq, metadata, duration = ciclo_vida_control.process_audio("./test/test_file")
         assert not os.path.isfile('test_file"')
         assert test_leq == leq
