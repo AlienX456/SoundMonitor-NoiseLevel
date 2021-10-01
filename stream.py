@@ -27,8 +27,8 @@ try:
         fileName = message.value.decode(os.environ['ENCODE_FORMAT'])
         logging.info("New Audio arrived ID %s to consumer %s", fileName, service_identifier)
         try:
-            leq, duration = control.process_audio(fileName)
-            dataToSend = {'device_info': {'data_uuid': fileName, 'index_name': os.getenv('ELASTIC_INDEX_NAME')}, 'noise_level': leq, 'noise_level_time': duration}
+            leq, metadata, duration = control.process_audio(fileName)
+            dataToSend = {'device_info': metadata, 'noise_level': leq, 'noise_level_time': duration}
             logging.info("About to send %s", dataToSend)
             producer.send(os.environ['PROCESS_RESULT_EVENT'], value=dataToSend)
             logging.info("%s Jobs Finished", fileName)
