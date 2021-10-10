@@ -4,8 +4,8 @@ import os
 
 class test_ciclo_vida(TestCase):
 
-    @mock.patch('resources.CicloVidaControl.AwsS3Resource')
-    @mock.patch('resources.CicloVidaControl.NivelRuido.calcular_db')
+    @mock.patch('resources.ciclo_vida_control.AwsS3Resource')
+    @mock.patch('resources.ciclo_vida_control.NivelRuido.calcular_db')
     def test_cicloDeVida(self, calcular_db, aws_s3_resource):
         open("./test/test_file", 'a').close()
         assert os.path.isfile('./test/test_file')
