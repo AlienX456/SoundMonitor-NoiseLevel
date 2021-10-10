@@ -1,4 +1,4 @@
-from NivelDeRuido.NivelRuido import NivelRuido
+from nivel_de_ruido.nivel_ruido import NivelRuido
 from unittest import TestCase
 
 
