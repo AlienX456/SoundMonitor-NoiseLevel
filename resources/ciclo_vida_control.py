@@ -1,6 +1,6 @@
 from datetime import datetime
-from NivelDeRuido.NivelRuido import NivelRuido
-from Resources.AwsS3Resource import AwsS3Resource
+from nivel_de_ruido.nivel_ruido import NivelRuido
+from resources.aws_s3_resource import AwsS3Resource
 import os
 
 class CicloVidaControl:
